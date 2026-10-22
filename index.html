@@ -1,263 +1,383 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Matheus Felipe — Desenvolvedor Web Júnior</title>
-<meta name="description" content="Portfólio de Matheus Felipe Pires de Souza, desenvolvedor web júnior em Campinas. Projetos em HTML, CSS e JavaScript.">
-<meta property="og:title" content="Matheus Felipe — Desenvolvedor Web Júnior">
-<meta property="og:description" content="Estudante de ADS no UNISAL e Técnico de Informática. Projetos em HTML, CSS e JavaScript.">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#f2f4f8;--surface:#ffffff;--ink:#141a26;--muted:#596273;--line:#d3d9e5;--line-strong:#9aa5ba;
-  --accent:#2447d8;--accent-hover:#1a37ad;--accent-soft:#e3e9fb;--accent-ink:#ffffff;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#0f1420;--surface:#171d2b;--ink:#eef1f7;--muted:#a3adbf;--line:#2a3345;--line-strong:#4a5670;
-    --accent:#7d97ff;--accent-hover:#9db0ff;--accent-soft:#1d2744;--accent-ink:#0f1420;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0f1420;--surface:#171d2b;--ink:#eef1f7;--muted:#a3adbf;--line:#2a3345;--line-strong:#4a5670;
-  --accent:#7d97ff;--accent-hover:#9db0ff;--accent-soft:#1d2744;--accent-ink:#0f1420;
-  color-scheme:dark;
-}
-*,*::before,*::after{box-sizing:inherit;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 1rem)}
-body{background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:.2em}
-a:hover{color:var(--accent-hover)}
-a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
-img{max-width:100%}
-.display{font-family:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;letter-spacing:-.02em}
-.wrap{max-width:880px;margin:0 auto;padding:0 1.5rem}
-
-/* topo */
-.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1.4rem 0}
-.top .brand{font:700 1.1rem "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
-.top nav{display:flex;gap:1.4rem;flex-wrap:wrap}
-.top nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.98rem}
-.top nav a:hover{color:var(--ink)}
-
-/* hero */
-.hero{padding:4.5rem 0 4.5rem;border-bottom:1px solid var(--line)}
-.hero h1{font:800 clamp(2.9rem,10vw,6.2rem)/.95 "Bricolage Grotesque",sans-serif;letter-spacing:-.04em;font-variation-settings:"opsz" 96;max-width:11ch}
-.hero .role{font:500 clamp(1.25rem,3vw,1.75rem)/1.2 "Bricolage Grotesque",sans-serif;color:var(--accent);margin-top:1.1rem;letter-spacing:-.01em}
-.hero .lead{max-width:56ch;margin-top:1.6rem;color:var(--muted);font-size:1.15rem}
-.hero .lead strong{color:var(--ink);font-weight:500}
-.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.2rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.3rem;border-radius:7px;font-weight:500;text-decoration:none;border:2px solid var(--accent);line-height:1.2;transition:background .15s,color .15s,border-color .15s}
-.btn.primary{background:var(--accent);color:var(--accent-ink)}
-.btn.primary:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:var(--accent-ink)}
-.btn.ghost{color:var(--accent);background:transparent}
-.btn.ghost:hover{background:var(--accent-soft);color:var(--accent)}
-.btn svg{width:1.05em;height:1.05em;flex:none}
-.status{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.75rem;color:var(--muted);font-size:.95rem}
-.status::before{content:"";width:.6rem;height:.6rem;border-radius:50%;background:#1f9d55;box-shadow:0 0 0 4px rgba(31,157,85,.18)}
-
-/* seções */
-section{padding:4rem 0;border-bottom:1px solid var(--line)}
-.section-head{display:grid;grid-template-columns:1fr;gap:.35rem;margin-bottom:2.25rem}
-h2{font:800 clamp(1.8rem,4.5vw,2.5rem)/1.05 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em}
-.section-head p{color:var(--muted);max-width:55ch}
-
-/* projetos */
-.project{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:1.25rem 3rem;padding:2rem 0;border-top:1px solid var(--line);align-items:start}
-.project:first-of-type{border-top:0;padding-top:0}
-.project h3{font:700 clamp(1.5rem,3.5vw,2rem)/1.1 "Bricolage Grotesque",sans-serif;letter-spacing:-.025em}
-.project .kind{color:var(--accent);font-weight:500;font-size:.95rem;margin-top:.35rem}
-.project p.desc{color:var(--muted);margin-top:.9rem;max-width:58ch}
-.project .side{display:flex;flex-direction:column;gap:1.1rem;padding-top:.45rem}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;padding:0}
-.tags li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.15rem .75rem;font-size:.88rem;color:var(--ink)}
-.links{display:flex;flex-direction:column;gap:.4rem;font-weight:500}
-.links a{display:inline-flex;align-items:center;gap:.45rem;width:fit-content}
-.links svg{width:1em;height:1em}
-@media (max-width:640px){.project{grid-template-columns:1fr;gap:1rem}.project .side{padding-top:0}}
-
-/* habilidades */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem 2.5rem}
-.skills h3{font:700 1.05rem "Bricolage Grotesque",sans-serif;margin-bottom:.6rem;padding-bottom:.5rem;border-bottom:2px solid var(--ink)}
-.skills ul{list-style:none;padding:0;color:var(--muted)}
-.skills li{padding:.2rem 0}
-
-/* experiência e formação */
-.timeline{display:grid;grid-template-columns:1fr;gap:0}
-.entry{display:grid;grid-template-columns:150px minmax(0,1fr);gap:.5rem 2.5rem;padding:1.5rem 0;border-top:1px solid var(--line)}
-.entry:first-child{border-top:0;padding-top:0}
-.entry .when{color:var(--muted);font-size:.95rem;padding-top:.25rem}
-.entry h3{font:700 1.3rem/1.2 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
-.entry .org{color:var(--muted);margin-top:.15rem}
-.entry p.what{color:var(--muted);margin-top:.7rem;max-width:58ch}
-@media (max-width:560px){.entry{grid-template-columns:1fr;gap:.25rem}}
-
-/* contato */
-.contact{display:grid;grid-template-columns:minmax(0,1fr);gap:1.5rem}
-.contact .big{font:700 clamp(1.6rem,5vw,2.6rem)/1.1 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;max-width:18ch}
-.contact p{color:var(--muted);max-width:52ch}
-
-footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-footer a{color:var(--muted)}
-
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-@media print{.top nav,.actions,.status{display:none}body{background:#fff;color:#000}section{page-break-inside:avoid}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matheus Felipe — Desenvolvedor Web Júnior</title>
+  <meta name="description" content="Portfólio de Matheus Felipe Pires de Souza, desenvolvedor web júnior em Campinas. Projetos em HTML, CSS, JavaScript e C.">
+  <meta property="og:title" content="Matheus Felipe — Desenvolvedor Web Júnior">
+  <meta property="og:description" content="Projetos, habilidades e experiência. Disponível para vagas júnior e estágio.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Aplica o tema salvo antes de renderizar, para não piscar.
+    try { if (localStorage.getItem("theme") === "light") document.documentElement.classList.add("light"); } catch (e) {}
+  </script>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="top">
-    <a class="brand" href="#">Matheus Felipe</a>
-    <nav aria-label="Principal">
-      <a href="#projetos">Projetos</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#experiencia">Experiência</a>
-      <a href="#contato">Contato</a>
+<header class="header">
+  <div class="container header-inner">
+    <a href="#" class="brand">matheus<span class="accent">.</span>felipe</a>
+    <nav class="nav">
+      <a href="#projetos"><span class="nav-n">01</span><span data-i18n="nav.projetos">Projetos</span></a>
+      <a href="#habilidades"><span class="nav-n">02</span><span data-i18n="nav.habilidades">Habilidades</span></a>
+      <a href="#experiencia"><span class="nav-n">03</span><span data-i18n="nav.experiencia">Experiência</span></a>
+      <a href="#certificados"><span class="nav-n">04</span><span data-i18n="nav.certificados">Certificados</span></a>
+      <a href="#contato"><span class="nav-n">05</span><span data-i18n="nav.contato">Contato</span></a>
     </nav>
-  </header>
-
-  <main>
-    <div class="hero">
-      <h1>Matheus Felipe Pires de Souza</h1>
-      <p class="role">Desenvolvedor Web Júnior</p>
-      <p class="lead">Estudante de Análise e Desenvolvimento de Sistemas no <strong>UNISAL</strong> e Técnico de Informática na <strong>InterOP</strong>, em Campinas. Construo sistemas web com HTML, CSS e JavaScript, programo em C e busco minha primeira oportunidade como desenvolvedor.</p>
-      <div class="actions">
-        <a class="btn primary" href="https://github.com/matheusfelipext?tab=repositories" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.9 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
-          Ver projetos no GitHub
-        </a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/matheus-felipe-pires-de-souza-b083b6377/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn ghost" href="Curriculo_Matheus.pdf" target="_blank" rel="noopener">Currículo em PDF</a>
+    <div class="header-actions">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" data-lang="pt" aria-pressed="true">pt</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">en</button>
       </div>
-      <p class="status">Disponível para vagas júnior e estágio</p>
+      <button type="button" id="theme-toggle" class="btn btn-outline btn-icon" aria-label="Alternar tema" data-i18n-aria="theme">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow" aria-hidden="true"></div>
+    <div class="container hero-grid">
+
+      <div class="card-surface rise hero-main">
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          <span data-i18n="hero.status">Disponível para vagas júnior e estágio</span>
+        </div>
+        <h1 class="display hero-title">Matheus<br>Felipe<span class="accent">.</span></h1>
+        <p class="hero-sub mono">Pires de Souza — <span class="fg" data-i18n="hero.role">Desenvolvedor Web Júnior</span></p>
+        <p class="hero-text" data-i18n="hero.text">Estudante de Análise e Desenvolvimento de Sistemas no UNISAL e Técnico de Informática na InterOP. Construo sistemas web com HTML, CSS e JavaScript, programo em C e busco minha primeira oportunidade como desenvolvedor.</p>
+        <div class="hero-actions">
+          <a href="https://github.com/matheusfelipext?tab=repositories" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+            <span data-i18n="hero.projects">Ver projetos</span>
+          </a>
+          <a href="https://www.linkedin.com/in/matheus-felipe-pires-de-souza-b083b6377/" target="_blank" rel="noopener" class="btn btn-outline">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+            LinkedIn
+          </a>
+          <a href="Curriculo_Matheus.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></svg>
+            <span data-i18n="hero.cv">Currículo</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card-surface rise lift hero-photo" style="animation-delay:80ms">
+        <!-- Para mostrar sua foto: troque este bloco por <img src="foto.jpg" alt="Matheus Felipe"> -->
+        <div class="photo-placeholder">
+          <span class="display photo-initials">MF</span>
+          <span class="label-mono" data-i18n="hero.photo">foto em breve</span>
+        </div>
+      </div>
+
+      <div class="card-surface rise hero-terminal" style="animation-delay:160ms">
+        <div class="term-bar">
+          <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+          <span class="term-path mono">~/campinas-sp</span>
+        </div>
+        <div class="term-body mono">
+          <p><span class="accent">$</span> <span class="fg">whoami</span></p>
+          <dl class="term-list">
+            <div><dt data-i18n="term.role">cargo</dt><dd class="fg" data-i18n="term.roleValue">Técnico de Informática</dd></div>
+            <div><dt data-i18n="term.degree">curso</dt><dd class="fg">ADS · UNISAL</dd></div>
+            <div><dt>stack</dt><dd class="fg">HTML · CSS · JS · C</dd></div>
+            <div><dt>status</dt><dd class="success" data-i18n="term.status">aberto a vagas</dd></div>
+          </dl>
+          <p class="caret"><span class="accent">$</span></p>
+        </div>
+      </div>
+
+      <div class="card-surface rise lift mini-card" style="animation-delay:240ms">
+        <div class="mini-head">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <span class="label-mono" data-i18n="mini.now">agora</span>
+        </div>
+        <p class="mini-text" data-i18n="mini.nowValue">Técnico de Informática na InterOP</p>
+      </div>
+
+      <div class="card-surface rise lift mini-card" style="animation-delay:320ms">
+        <div class="mini-head">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="label-mono" data-i18n="mini.local">local</span>
+        </div>
+        <p class="mini-text">Campinas, SP · Brasil</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee" id="marquee"></div>
+  </div>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="section container">
+    <div class="section-head reveal">
+      <div>
+        <p class="label-mono"><span class="accent">01</span> / <span data-i18n="nav.projetos">Projetos</span></p>
+        <h2 class="display section-title" data-i18n="nav.projetos">Projetos</h2>
+      </div>
+      <p class="section-sub" data-i18n="projects.sub">Projetos e exercícios da faculdade, com o código aberto no GitHub.</p>
     </div>
 
-    <section id="projetos">
-      <div class="section-head">
-        <h2>Projetos</h2>
-        <p>Projetos e exercícios da faculdade, com o código aberto no GitHub.</p>
+    <div class="projects-grid">
+      <!-- Destaque: Bingo -->
+      <div class="reveal project-featured">
+        <article class="card-surface project-featured-inner">
+          <div class="project-body">
+            <p class="label-mono accent"><span data-i18n="bingo.kicker">Programa em C</span> · <span data-i18n="projects.featured">destaque</span></p>
+            <h3 class="display project-title-lg" data-i18n="bingo.title">Gerador de Cartelas de Bingo</h3>
+            <p class="muted project-desc" data-i18n="bingo.desc">Gera cartelas seguindo as regras oficiais: colunas B-I-N-G-O com faixas de valores, espaço livre no centro e números sem repetição. Aceita a quantidade escolhida pelo usuário, ordena cada coluna e garante que nenhuma cartela se repita.</p>
+            <p class="muted small" data-i18n="bingo.try">Experimente ao lado — a mesma lógica do programa, rodando no navegador.</p>
+            <div class="project-foot column">
+              <ul class="tags"><li>C</li><li>Structs</li><li>Matrizes</li><li>Funções</li></ul>
+              <div class="project-links">
+                <a href="https://github.com/matheusfelipext/Bingo" target="_blank" rel="noopener"><span data-i18n="projects.code">Ver código</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview bingo">
+            <div class="preview-bar">
+              <span class="label-mono">./bingo --cartelas 1</span>
+              <button type="button" id="bingo-generate" class="chip-btn mono">
+                <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22M18 2l4 4-4 4M2 6h1.9c1.5 0 2.9.9 3.6 2.2M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8M18 14l4 4-4 4"/></svg>
+                <span data-i18n="bingo.generate">Gerar</span>
+              </button>
+            </div>
+            <div class="bingo-grid" id="bingo-grid"></div>
+          </div>
+        </article>
       </div>
 
-      <article class="project">
+      <!-- LabManager -->
+      <div class="reveal" style="transition-delay:80ms">
+        <article class="card-surface lift project-card">
+          <div class="preview" aria-hidden="true">
+            <div class="preview-bar">
+              <span class="mono muted small">labmanager</span>
+              <span class="pill-primary mono">+ <span data-i18n="lab.new">novo</span></span>
+            </div>
+            <div class="lab-rows">
+              <div class="lab-row"><span class="fg">Lab 01</span><span class="mono muted small">24 PCs</span><span class="mono small success" data-i18n="lab.free">livre</span></div>
+              <div class="lab-row"><span class="fg">Lab 02</span><span class="mono muted small">18 PCs</span><span class="mono small accent" data-i18n="lab.inuse">em uso</span></div>
+              <div class="lab-row"><span class="fg">Lab 03</span><span class="mono muted small">30 PCs</span><span class="mono small success" data-i18n="lab.free">livre</span></div>
+            </div>
+          </div>
+          <p class="label-mono accent project-kicker" data-i18n="lab.kicker">Gestão de laboratórios</p>
+          <h3 class="display project-title">LabManager</h3>
+          <p class="muted project-desc" data-i18n="lab.desc">Site para gerenciar laboratórios de informática, com login, cadastro, lista de laboratórios, equipamentos e galeria. Feito para a disciplina de front-end, com layout consistente entre todas as páginas.</p>
+          <div class="project-foot">
+            <ul class="tags"><li>HTML</li><li>CSS</li></ul>
+            <div class="project-links">
+              <a href="https://github.com/matheusfelipext/Labmanager" target="_blank" rel="noopener"><span data-i18n="projects.code">Ver código</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Exercícios em C -->
+      <div class="reveal" style="transition-delay:160ms">
+        <article class="card-surface lift project-card">
+<pre class="preview code-preview mono" aria-hidden="true"><code><span class="accent">int</span> <span class="fg">soma</span>(<span class="accent">int</span> v[], <span class="accent">int</span> n) {
+  <span class="accent">int</span> s = <span class="success">0</span>;
+  <span class="accent">for</span> (<span class="accent">int</span> i = <span class="success">0</span>; i &lt; n; i++)
+    s += v[i];
+  <span class="accent">return</span> s;
+}</code></pre>
+          <p class="label-mono accent project-kicker" data-i18n="ex.kicker">Lições da faculdade</p>
+          <h3 class="display project-title" data-i18n="ex.title">Exercícios em C</h3>
+          <p class="muted project-desc" data-i18n="ex.desc">Exercícios resolvidos da disciplina de Linguagem C, com vetores, matrizes, strings e funções.</p>
+          <div class="project-foot">
+            <ul class="tags"><li>C</li></ul>
+            <div class="project-links">
+              <a href="https://github.com/matheusfelipext/exercicios_c" target="_blank" rel="noopener"><span data-i18n="ex.link1">Exercícios</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+              <a href="https://github.com/matheusfelipext/Aula2_exercicios" target="_blank" rel="noopener"><span data-i18n="ex.link2">Aula 2</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades" class="band">
+    <div class="section container">
+      <div class="section-head reveal">
         <div>
-          <h3>Gerador de Cartelas de Bingo</h3>
-          <p class="kind">Programa em C</p>
-          <p class="desc">Gera cartelas de bingo seguindo as regras oficiais: colunas B-I-N-G-O com faixas de valores, espaço livre no centro e números sem repetição. Aceita a quantidade de cartelas escolhida pelo usuário, ordena os números de cada coluna e garante que nenhuma cartela se repita.</p>
+          <p class="label-mono"><span class="accent">02</span> / <span data-i18n="nav.habilidades">Habilidades</span></p>
+          <h2 class="display section-title" data-i18n="nav.habilidades">Habilidades</h2>
         </div>
-        <div class="side">
-          <ul class="tags"><li>C</li><li>Structs</li><li>Matrizes</li><li>Funções</li></ul>
-          <div class="links">
-            <a href="https://github.com/matheusfelipext/Bingo" target="_blank" rel="noopener">Ver código</a>
+        <p class="section-sub" data-i18n="skills.sub">O que uso no dia a dia — do código ao suporte técnico.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="reveal span-2">
+          <div class="card-surface lift skill-card">
+            <div class="skill-head"><h3 class="display skill-title">Front-end</h3><span class="mono accent small">01</span></div>
+            <ul class="chips"><li data-i18n="sk.htmlcss">HTML e CSS</li><li>JavaScript</li><li>Figma</li></ul>
           </div>
         </div>
-      </article>
+        <div class="reveal" style="transition-delay:80ms">
+          <div class="card-surface lift skill-card">
+            <div class="skill-head"><h3 class="display skill-title" data-i18n="sk.langs">Linguagens</h3><span class="mono accent small">02</span></div>
+            <ul class="chips"><li>Java</li><li>C</li><li>Python</li></ul>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:160ms">
+          <div class="card-surface lift skill-card">
+            <div class="skill-head"><h3 class="display skill-title" data-i18n="sk.data">Dados</h3><span class="mono accent small">03</span></div>
+            <ul class="chips"><li>SQL</li></ul>
+          </div>
+        </div>
+        <div class="reveal span-2" style="transition-delay:240ms">
+          <div class="card-surface lift skill-card">
+            <div class="skill-head"><h3 class="display skill-title" data-i18n="sk.infra">Infraestrutura</h3><span class="mono accent small">04</span></div>
+            <ul class="chips"><li data-i18n="sk.net">Redes e hardware</li><li data-i18n="sk.support">Suporte técnico</li><li data-i18n="sk.git">Git e GitHub</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <article class="project">
+  <!-- EXPERIÊNCIA -->
+  <section id="experiencia" class="section container">
+    <div class="section-head reveal">
+      <div>
+        <p class="label-mono"><span class="accent">03</span> / <span data-i18n="nav.experiencia">Experiência</span></p>
+        <h2 class="display section-title" data-i18n="nav.experiencia">Experiência</h2>
+      </div>
+      <p class="section-sub" data-i18n="exp.sub">Trabalho em TI e formação acadêmica.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="reveal">
+        <div class="card-surface lift exp-card">
+          <div class="exp-head">
+            <p class="mono muted small" data-i18n="exp1.period">Jul 2026 — atual</p>
+            <div class="exp-badges"><span class="tag" data-i18n="exp.work">trabalho</span><span class="tag tag-success" data-i18n="exp.current">atual</span></div>
+          </div>
+          <h3 class="exp-title" data-i18n="exp1.title">Técnico de Informática</h3>
+          <p class="accent small">InterOP · Campinas, SP</p>
+          <p class="muted exp-desc" data-i18n="exp1.desc">Manutenção preventiva e corretiva, suporte e assessoria especializada na área de Tecnologia da Informação.</p>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:60ms">
+        <div class="card-surface lift exp-card">
+          <div class="exp-head">
+            <p class="mono muted small">Jun 2025 — Jul 2026</p>
+            <div class="exp-badges"><span class="tag" data-i18n="exp.work">trabalho</span></div>
+          </div>
+          <h3 class="exp-title" data-i18n="exp2.title">Apoio Técnico Operacional</h3>
+          <p class="accent small">InterOP · Campinas, SP</p>
+          <p class="muted exp-desc" data-i18n="exp2.desc">Apoio técnico e operacional em TI. Promovido a Técnico de Informática em julho de 2026.</p>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:120ms">
+        <div class="card-surface lift exp-card">
+          <div class="exp-head">
+            <p class="mono muted small" data-i18n="exp3.period">2026 — atual</p>
+            <div class="exp-badges"><span class="tag" data-i18n="exp.edu">formação</span><span class="tag tag-success" data-i18n="exp.current">atual</span></div>
+          </div>
+          <h3 class="exp-title" data-i18n="exp3.title">Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+          <p class="accent small">UNISAL · Campinas, SP</p>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:180ms">
+        <div class="card-surface lift exp-card">
+          <div class="exp-head">
+            <p class="mono muted small" data-i18n="exp4.period">Concluído em 2024</p>
+            <div class="exp-badges"><span class="tag" data-i18n="exp.edu">formação</span></div>
+          </div>
+          <h3 class="exp-title" data-i18n="exp4.title">Curso Técnico em TI (CPDB)</h3>
+          <p class="accent small">Escola Salesiana São José</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICADOS -->
+  <section id="certificados" class="band">
+    <div class="section container">
+      <div class="section-head reveal">
         <div>
-          <h3>LabManager</h3>
-          <p class="kind">Gestão de laboratórios</p>
-          <p class="desc">Site para gerenciar laboratórios de informática, com login, cadastro, lista de laboratórios, equipamentos e galeria. Feito para a disciplina de front-end, com atenção a um layout consistente entre todas as páginas.</p>
+          <p class="label-mono"><span class="accent">04</span> / <span data-i18n="nav.certificados">Certificados</span></p>
+          <h2 class="display section-title" data-i18n="nav.certificados">Certificados</h2>
         </div>
-        <div class="side">
-          <ul class="tags"><li>HTML</li><li>CSS</li></ul>
-          <div class="links">
-            <a href="https://github.com/matheusfelipext/Labmanager" target="_blank" rel="noopener">Ver código</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project">
-        <div>
-          <h3>Exercícios em linguagem C</h3>
-          <p class="kind">Lições da faculdade</p>
-          <p class="desc">Exercícios resolvidos da disciplina de Linguagem C, com vetores, matrizes, strings e funções.</p>
-        </div>
-        <div class="side">
-          <ul class="tags"><li>C</li></ul>
-          <div class="links">
-            <a href="https://github.com/matheusfelipext/exercicios_c" target="_blank" rel="noopener">Exercícios</a>
-            <a href="https://github.com/matheusfelipext/Aula2_exercicios" target="_blank" rel="noopener">Exercícios da aula 2</a>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <section id="habilidades">
-      <div class="section-head">
-        <h2>Habilidades</h2>
+        <p class="section-sub" data-i18n="cert.sub">Cursos e certificações concluídos.</p>
       </div>
-      <div class="skills">
-        <div><h3>Front-end</h3><ul><li>HTML e CSS</li><li>JavaScript</li><li>Figma</li></ul></div>
-        <div><h3>Linguagens</h3><ul><li>Java</li><li>C</li><li>Python</li></ul></div>
-        <div><h3>Dados</h3><ul><li>SQL</li></ul></div>
-        <div><h3>Infraestrutura</h3><ul><li>Redes e hardware</li><li>Suporte técnico</li><li>Git e GitHub</li></ul></div>
-      </div>
-    </section>
-
-    <section id="experiencia">
-      <div class="section-head">
-        <h2>Experiência e formação</h2>
-      </div>
-      <div class="timeline">
-        <div class="entry">
-          <div class="when">Jul 2026 – atual</div>
-          <div>
-            <h3>Técnico de Informática</h3>
-            <p class="org">InterOP · Campinas, SP</p>
-            <p class="what">Manutenção preventiva e corretiva, suporte e assessoria especializada na área de Tecnologia da Informação.</p>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="when">Jun 2025 – Jul 2026</div>
-          <div>
-            <h3>Apoio Técnico Operacional</h3>
-            <p class="org">InterOP · Campinas, SP</p>
-            <p class="what">Apoio técnico e operacional na área de Tecnologia da Informação. Promovido a Técnico de Informática em julho de 2026.</p>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="when">2026 – atual</div>
-          <div>
-            <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
-            <p class="org">UNISAL · Campinas, SP</p>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="when">Concluído em 2024</div>
-          <div>
-            <h3>Curso Técnico em TI (CPDB)</h3>
-            <p class="org">Escola Salesiana São José</p>
+      <div class="cert-grid">
+        <div class="reveal">
+          <div class="card-surface lift cert-card">
+            <div class="cert-head">
+              <svg class="icon icon-xl accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="m15.5 13 1.5 9-5-3-5 3 1.5-9"/></svg>
+              <span class="mono muted small">2024</span>
+            </div>
+            <div>
+              <h3 class="cert-title" data-i18n="cert1.title">Técnico em Tecnologia da Informação</h3>
+              <p class="muted small cert-issuer">Escola Salesiana São José (CPDB)</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contato">
-      <div class="contact">
-        <h2 class="big">Vamos conversar?</h2>
-        <p>Estou aberto a vagas de desenvolvedor web júnior e estágio.</p>
-        <p><a href="mailto:souzamatheusfelipepires@gmail.com">souzamatheusfelipepires@gmail.com</a></p>
-        <div class="actions" style="margin-top:0">
-          <a class="btn primary" href="mailto:souzamatheusfelipepires@gmail.com">Enviar e-mail</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/matheus-felipe-pires-de-souza-b083b6377/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn ghost" href="https://github.com/matheusfelipext" target="_blank" rel="noopener">GitHub</a>
+  <!-- CONTATO -->
+  <section id="contato" class="contact">
+    <div class="bg-glow flipped" aria-hidden="true"></div>
+    <div class="container contact-inner">
+      <div class="reveal">
+        <div class="card-surface contact-card">
+          <p class="label-mono"><span class="accent">05</span> / <span data-i18n="nav.contato">Contato</span></p>
+          <h2 class="display contact-title"><span data-i18n="contact.l1">Vamos</span><br><span data-i18n="contact.l2">conversar</span><span class="accent">?</span></h2>
+          <p class="muted contact-text" data-i18n="contact.text">Estou aberto a vagas de desenvolvedor web júnior e estágio.</p>
+          <div class="contact-actions">
+            <a href="mailto:souzamatheusfelipepires@gmail.com" class="btn btn-primary">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span data-i18n="contact.send">Enviar e-mail</span>
+            </a>
+            <button type="button" id="copy-email" class="btn btn-outline mono btn-copy">
+              <svg class="icon icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              <svg class="icon icon-check success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="copy-label">souzamatheusfelipepires@gmail.com</span>
+            </button>
+            <div class="contact-icons">
+              <a href="https://www.linkedin.com/in/matheus-felipe-pires-de-souza-b083b6377/" target="_blank" rel="noopener" aria-label="LinkedIn" class="btn btn-outline btn-icon-lg">
+                <svg class="icon icon-lg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+              </a>
+              <a href="https://github.com/matheusfelipext" target="_blank" rel="noopener" aria-label="GitHub" class="btn btn-outline btn-icon-lg">
+                <svg class="icon icon-lg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+              </a>
+              <a href="Curriculo_Matheus.pdf" target="_blank" rel="noopener" aria-label="PDF" class="btn btn-outline btn-icon-lg">
+                <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer>
-    <span>© 2026 Matheus Felipe Pires de Souza</span>
-    <span>Campinas, SP</span>
-  </footer>
-</div>
+<footer class="footer">
+  <div class="container footer-inner mono">
+    <p>© 2026 Matheus Felipe Pires de Souza</p>
+    <p>Campinas, SP · <span data-i18n="footer.coffee">feito com café</span> ☕</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
